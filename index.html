@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Word Processor</title>
+  <link rel="icon" href="icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <script>
+    // Light or dark before the first paint, so a dark window never flashes white (see ui/theme.js).
+    try {
+      var pref = JSON.parse(localStorage.getItem('wp.theme') || '"system"')
+      var dark = pref === 'dark' || (pref === 'system' && matchMedia('(prefers-color-scheme: dark)').matches)
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+      document.documentElement.dataset.pages = dark && JSON.parse(localStorage.getItem('wp.darkPages') || 'true') ? 'dark' : 'light'
+    } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="app">
+    <header class="chrome">
+      <nav class="menubar" id="menubar" aria-label="Menu"></nav>
+      <div class="toolbar" id="toolbar" role="toolbar" aria-label="Formatting"></div>
+    </header>
+    <main class="workspace" id="workspace">
+      <div class="page-stack" id="page-stack">
+        <div class="sheets" id="sheets" aria-hidden="true"></div>
+        <div class="editor-host" id="editor"></div>
+      </div>
+    </main>
+    <footer class="statusbar" id="statusbar"></footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
