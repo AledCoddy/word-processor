@@ -1,7 +1,7 @@
 // Keeps a copy of the app so the installed app opens without the internet. Online, the newest
 // version is fetched (and kept); offline, the kept copy is used. The build fills in the version, so a
 // new version starts a fresh copy and the old one is removed.
-const CACHE = 'word-processor-0.3.3'
+const CACHE = 'word-processor-0.3.4'
 const FILES = ['./', 'index.html', 'app.js', 'app.css', 'icon.png', 'icon-192.png', 'icon-512.png', 'manifest.webmanifest', 'licenses.txt']
 
 self.addEventListener('install', (event) => {
